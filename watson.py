@@ -20,19 +20,36 @@ def getSentient(data):
 def getScore(info):
     info = getSentient(info)
     a=re.search(r'\b(score)\b', info)
-    return float(info[a.end()+3:a.end()+10])
+    return float(info[a.end()+3:a.end()+7])    
 
 def findFood(score):
-    if score>=-1 and score<-0.7:
-        print("If you're feeling down, you should eat some ice cream")
-    elif score>=-0.7 and score<-0.4:
-        print("You seem tired, let's go to a coffee shop")
-    elif score>=-0.4 and score<0.4:
-        print("When in doubt, fast food never hurts")
-    elif score>=0.4 and score<0.7:
+    file = open("sentientdata.txt","w")
+    if score>=-1 and score<-0.8:
+        file.write("1500\n")
+        file.write("icecream,dessert\n")
+        file.write("1,2\n")
+        print("Sounds like you need some Ice Cream") #distance: close
+    elif score>=-0.8 and score<-0.6:
+        file.write("1500\n")
+        file.write("coffee,cafe\n")
+        file.write("1,2\n")
+        print("Let's go to a coffee shop")
+    elif score>=-0.6 and score<0.4:
+        file.write("5000\n")
+        file.write("burger,hotdog,fastfood\n")
+        file.write("1,2\n")
+        print("When in doubt, fast food never hurts") #distance not relavant 
+    elif score>=0.4 and score<0.8:
+        file.write("5000\n")
+        file.write("chinese,italian,mexican\n")
+        file.write("1,2\n")
         print("You seem pretty relaxed, how about some takeout")
     else:
+        file.write("20000\n")
+        file.write("sushi,healthy,steak\n")
+        file.write("2,3,4\n")
         print ("You seem happy, let's celebrate with some good food")
+    file.close()
 
 
 
