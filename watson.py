@@ -24,7 +24,7 @@ def getScore(info):
 
 def findFood(score):
     if score>=-1 and score<-0.7:
-        print("If you're feeling down, you should eat some Ice Cream")
+        print("If you're feeling down, you should eat some ice cream")
     elif score>=-0.7 and score<-0.4:
         print("You seem tired, let's go to a coffee shop")
     elif score>=-0.4 and score<0.4:
